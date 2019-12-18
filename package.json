@@ -2,7 +2,7 @@
   "name": "yahtzee-js",
   "version": "0.0.1",
   "description": "Basic yahtzee game",
-  "repository": "",
+  "repository": "github:shanebishop/yahtzee-js",
   "license": "",
   "scripts": {
     "lint": "eslint . --fix",
