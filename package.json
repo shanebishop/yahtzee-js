@@ -1,0 +1,19 @@
+{
+  "name": "yahtzee-js",
+  "version": "0.0.1",
+  "description": "Basic yahtzee game",
+  "repository": "",
+  "license": "",
+  "scripts": {
+    "lint": "eslint . --fix",
+    "test": "mocha --recursive"
+  },
+  "dependencies": {
+    "eslint": "^5.9.0",
+    "underscore": "^1.9.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2"
+  }
+}
