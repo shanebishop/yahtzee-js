@@ -41,17 +41,14 @@ describe('Round', function () {
 
 });
 
-// WARNING Doesn't actually do set equality
+// expected should be an array, actual should be a Set object
 function setEqual (expected, actual) {
-    // Need != instead of !==
-    if (expected.length != actual.size) {
-        return false;
-    }
-
-    console.log(setToString(actual));
-
     var expectedAsSet = new Set(expected);
     var iterator = expectedAsSet.values();
+
+    if (expectedAsSet.size !== actual.size) {
+        return false;
+    }
 
     for (var entry of iterator) {
         if (!actual.has(entry)) {
@@ -62,22 +59,12 @@ function setEqual (expected, actual) {
     return true;
 }
 
-// TODO Build a string array and then join the string to produce a single string instead
 function setToString (set) {
-    var iterator = set.values();
-    var entries = [], i = 0;
-    var ret = '{';
+    var entries = [], i = 0, iterator = set.values();
 
     for (var entry of iterator) {
-        entries[i++] = entry;
+        entries[i++] = entry.toString();
     }
 
-    for (var i = 0; i < entries.length; ++i) {
-        ret = ret + entries[i];
-        if (i+1 < entries.length) {
-            ret = ret + ',';
-        }
-    }
-
-    return ret + '}';
+    return ['{', entries.join(','), '}'].join('');
 }
