@@ -1,3 +1,5 @@
+'use strict';
+
 var Scorer = require('./client/scorer');
 
 function main () {

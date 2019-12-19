@@ -1,3 +1,5 @@
+'use strict';
+
 var assert = require('chai').assert;
 var Scorer = require('../../client/scorer')
 
@@ -214,6 +216,18 @@ describe('Scorer', function () {
         var dieRolls = [3, 3, 3, 3, 3];
         var scored = s.score(dieRolls, Scorer.FRSTYAHTZEE_CODE);
         assert.equal(Scorer.FRSTYAHTZEE_SCORE, scored);
+    });
+
+    it('Can score in second yahtzee category', function () {
+        var scored, s = new Scorer();
+
+        var firstRoll = [4, 4, 4, 4, 4];
+        var scored = s.score(firstRoll, Scorer.FRSTYAHTZEE_CODE);
+        assert.equal(Scorer.FRSTYAHTZEE_SCORE, scored);
+
+        var secondRoll = [3, 3, 3, 3, 3];
+        scored = s.score(secondRoll, Scorer.SCNDYAHTZEE_CODE);
+        assert.equal(Scorer.SCNDYAHTZEE_SCORE, scored);
     });
 
 });
