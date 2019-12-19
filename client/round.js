@@ -1,13 +1,14 @@
 'use strict';
 
-var Game = require('./game')
+var Utils = require('../common/utils');
+var Game = require('./game');
 
 function Round (view) {
     this._view = view;
     this._rollsRemaining = Round.MAX_ROLLS;
     this._rolled = [];
     for (var i = 0; i < Game.NUM_DICE_ROLLED; ++i) {
-        this._rolled[i] = undefined;
+        this._rolled[i] = null;
     }
 }
 
@@ -89,6 +90,28 @@ Round.prototype.roll = function (heldPos) {
     --this._rollsRemaining;
     return this._rolled;
 };
+
+Round.parsePosToHold = function (selection) {
+    var tokens = selection.trim().split(/\s+/); // Split input on whitespace
+    var posToHold = new Set();
+
+    for (var i = 0; i < tokens.length; ++i) {
+        var parsed = parseInt(tokens[i]);
+
+        if (!Utils.isInt(tokens[i]) || parsed < 1 || parsed > Game.NUM_DICE_ROLLED) {
+            return null; // Index is out of range
+        }
+
+        posToHold.add(parsed);
+    }
+
+    // Cannot hold more than NUM_DICE_ROLLED-1 positions
+    if (posToHold.size >= Game.NUM_DICE_ROLLED) {
+        return null;
+    }
+
+    return posToHold;
+}
 
 /**
  * Returns a random integer between min (inclusive) and max (inclusive).

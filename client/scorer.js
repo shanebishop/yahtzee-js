@@ -1,5 +1,6 @@
 'use strict';
 
+var Utils = require('../common/utils');
 var _ = require('underscore');
 
 function Scorer () {
@@ -154,14 +155,7 @@ Scorer.isValidCategory = function (categoryStr) {
     // parseInt returns a Number rather than an int. parseInt also floors its
     // input in order to return an integral, so we must confirm the original
     // string is integral.
-    return isInt(categoryStr) && category >= 1 && category <= Scorer.NUM_CATEGORIES;
-}
-
-// Returns true if value is an integral value, even if value is a string
-function isInt (value) {
-    return !isNaN(value) &&
-         parseInt(Number(value)) == value && // Must use == instead of === here
-         !isNaN(parseInt(value, 10));
+    return Utils.isInt(categoryStr) && category >= 1 && category <= Scorer.NUM_CATEGORIES;
 }
 
 // Returns a map representing corresponding the die values rolled to the number of
