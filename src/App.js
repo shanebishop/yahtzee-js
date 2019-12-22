@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import View from './client/view';
 //import './App.css'; // Uncomment to import CSS for App
 
 var Scorer = require('./client/scorer');
@@ -22,6 +23,9 @@ function App() {
           Hello, I have text
         </p>
       </header>
+      <div>
+        <View />
+      </div>
     </div>
   );
 }
