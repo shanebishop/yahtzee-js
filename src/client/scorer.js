@@ -67,6 +67,8 @@ Scorer.prototype.score = function (dieRoll, scoreCode) {
 
     var score;
 
+    console.log('Is the score code an upper score code?', isUpperScoreCode(scoreCode));
+
     if (isUpperScoreCode(scoreCode)) {
         score = scoreForUpperSection(dieRoll, scoreCode);
     } else if (scoreCode === Scorer.LGSTRAIGHT_CODE) {
@@ -213,6 +215,8 @@ function scoreForUpperSection (dieRoll, scoreCode) {
     codeToDieRoll[Scorer.FOURS_CODE] = 4;
     codeToDieRoll[Scorer.FIVES_CODE] = 5;
     codeToDieRoll[Scorer.SIXES_CODE] = 6;
+
+    console.log('scoreCode is', scoreCode);
 
     var score = 0;
     for (var i = 0; i < dieRoll.length; ++i) {
