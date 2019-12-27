@@ -40,8 +40,8 @@ class Board extends React.Component {
 class View extends React.Component {
     state = {};
 
-    newRoll () {
-        return this.props.newRoll();
+    scoreButtonHandler (e) {
+        return this.props.scoreButtonHandler(e);
     }
 
     render () {
@@ -50,7 +50,7 @@ class View extends React.Component {
         return (
             <div className="game-board">
                 <Board rolled={rolled} />
-                <button onClick={this.newRoll.bind(this)}>{'asdfasdf'}</button>
+                <button onClick={this.scoreButtonHandler.bind(this)}>{'Score roll'}</button>
             </div>
         );
     }

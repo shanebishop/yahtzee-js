@@ -83,7 +83,7 @@ Round.prototype.roll = function (heldPos) {
     for (var i = 0; i < this._rolled.length; ++i) {
         // If this position is not held, reroll it
         if (!heldPos.includes(i+1)) {
-            this._rolled[i] = randInt(1, maxDieRoll);
+            this._rolled[i] = Utils.randInt(1, maxDieRoll);
         }
     }
 
@@ -111,18 +111,6 @@ Round.parsePosToHold = function (selection) {
     }
 
     return posToHold;
-}
-
-/**
- * Returns a random integer between min (inclusive) and max (inclusive).
- * The value is no lower than min (or the next integer greater than min
- * if min isn't an integer) and no greater than max (or the next integer
- * lower than max if max isn't an integer).
- * Assumes both max and min are integers.
- * Using Math.round() will give you a non-uniform distribution!
- */
-function randInt (min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 module.exports = Round;

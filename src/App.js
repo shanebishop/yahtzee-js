@@ -2,6 +2,8 @@
 
 import React from 'react';
 import View from './client/view';
+import Game from './client/game';
+import Utils from './common/utils';
 //import './App.css'; // Uncomment to import CSS for App
 
 var Scorer = require('./client/scorer');
@@ -18,10 +20,14 @@ class App extends React.Component {
         rolled : [4, 3, 5, 2, 5]
     };
 
-    newRoll () {
-        console.log('In App\'s newRoll function');
+    scoreButtonHandler (e) {
+        console.log('In App\'s newRoll function, the event is', e);
+        var rolled = [];
+        for (var i = 0; i < Game.NUM_DICE_ROLLED; ++i) {
+            rolled[i] = Utils.randInt(1, 6);
+        }
         this.setState({
-            rolled : [6,6,6,6,6]
+            rolled : rolled
         });
     }
 
@@ -32,7 +38,7 @@ class App extends React.Component {
               <div>
                 <View
                     rolled={this.state.rolled}
-                    newRoll={this.newRoll.bind(this)}
+                    scoreButtonHandler={this.scoreButtonHandler.bind(this)}
                 />
               </div>
             </div>
