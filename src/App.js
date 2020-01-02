@@ -51,6 +51,23 @@ class App extends React.Component {
         this.setState(newState);
     }
 
+    holdDiceButtonHandler (e) {
+        var newState = this.state;
+        newState.state = States.CHOOSE_DICE_TO_HOLD;
+        this.setState(newState);
+    }
+
+    diceHeldButtonHandler (e) {
+        var newState = this.state;
+
+        console.log('Dice held button handler pressed');
+        //TODO
+    }
+
+    onDieClick (e) {
+        console.log('Die was clicked with event', e);
+    }
+
     nextState () {
         var currentState = this.state.state;
         var round = this.state.round;
@@ -61,8 +78,6 @@ class App extends React.Component {
     }
 
     scoreForScoreCode (scoreCode) {
-        console.log('In scoreForScoreCode for App,', scoreCode);
-
         var { rolled, scorer } = this.state;
 
         if (scoreCode === 'yahtzee') {
@@ -84,7 +99,6 @@ class App extends React.Component {
     }
 
     showSelectView () {
-        console.log('showSelectView called with state', this.state);
         return [States.SELECT_CAT_STATE, States.SELECTED_CAT_STATE].includes(this.state.state);
     }
 
@@ -104,9 +118,13 @@ class App extends React.Component {
                     rerollAllButtonHandler={this.rerollAllButtonHandler.bind(this)}
                     showSelectView={this.showSelectView()}
                     showRoundScoreView={this.showRoundScoreView()}
+                    showHoldDiceView={this.state.state === States.CHOOSE_DICE_TO_HOLD}
                     scoreForScoreCode={this.scoreForScoreCode.bind(this)}
                     roundScore={this.state.roundScore}
                     nextRoundButtonHandler={this.nextRoundButtonHandler.bind(this)}
+                    holdDiceButtonHandler={this.holdDiceButtonHandler.bind(this)}
+                    diceHeldButtonHandler={this.diceHeldButtonHandler.bind(this)}
+                    onDieClick={this.onDieClick.bind(this)}
                 />
               </div>
             </div>

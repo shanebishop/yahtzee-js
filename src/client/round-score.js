@@ -13,10 +13,10 @@ class RoundScore extends React.Component {
         }
 
         return (
-            <div>
+            <>
                 <p>{'Scored ' + this.props.score + ' points this round.'}</p>
                 <button onClick={this.props.nextRoundButtonHandler}>{'Continue to next round'}</button>
-            </div>
+            </>
         );
     }
 }

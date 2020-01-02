@@ -5,16 +5,19 @@ import ReactDOM from 'react-dom';
 
 import SelectView from './select-view';
 import RoundScore from './round-score';
+import HoldDiceView from './hold-dice-view';
 
 class Die extends React.Component {
+    // TODO Can maybe extract the position from the alt attribute, or maybe I can add a custom attribute to retrieve
+    // Either way, in App.js, I think I can extract things with e.target.getAttribute('attributeNameAsString')
     render () {
         return (
             <img
-                src={"img/die" + this.props.value +".png"}
+                src={'img/die' + this.props.value + '.png'}
                 alt="my image"
                 height="70"
                 width="70"
-                onClick={() => console.log('Button pressed')}
+                onClick={this.props.onClick}
             />
         );
     }
@@ -22,12 +25,12 @@ class Die extends React.Component {
 
 class Board extends React.Component {
     renderDie (i) {
-        return <Die value={this.props.rolled[i]} />
+        return <Die value={this.props.rolled[i]} onClick={this.props.onDieClick} />
     }
 
     render () {
         return (
-            <div>
+            <>
                 <div className="die-rolls">
                     {this.renderDie(0)}
                     {this.renderDie(1)}
@@ -35,31 +38,22 @@ class Board extends React.Component {
                     {this.renderDie(3)}
                     {this.renderDie(4)}
                 </div>
-            </div>
+            </>
         );
     }
 }
 
 class View extends React.Component {
-    state = {};
-
-    scoreButtonHandler (e) {
-        return this.props.scoreButtonHandler(e);
-    }
-
-    rerollAllButtonHandler (e) {
-        return this.props.rerollAllButtonHandler(e);
-    }
-
     render () {
-        const rolled = this.props.rolled;
-        console.log('Attempting to render view with rolled', this.props.rolled);
+        var rolled = this.props.rolled;
+
         return (
             <div className="game-board">
                 <p>{'On round ' + this.props.game.getRound() + '.'}</p>
-                <Board rolled={rolled} />
-                <button onClick={this.scoreButtonHandler.bind(this)}>{'Score roll'}</button>
-                <button onClick={this.rerollAllButtonHandler.bind(this)}>{'Reroll all'}</button>
+                <Board rolled={rolled} onDieClick={this.props.onDieClick} />
+                <button onClick={this.props.scoreButtonHandler}>{'Score roll'}</button>
+                <button onClick={this.props.rerollAllButtonHandler}>{'Reroll all'}</button>
+                <button onClick={this.props.holdDiceButtonHandler}>{'Choose some dice to hold'}</button>
                 <SelectView
                     show={this.props.showSelectView}
                     scoreForScoreCode={this.props.scoreForScoreCode}
@@ -68,6 +62,10 @@ class View extends React.Component {
                     show={this.props.showRoundScoreView}
                     score={this.props.roundScore}
                     nextRoundButtonHandler={this.props.nextRoundButtonHandler}
+                />
+                <HoldDiceView
+                    show={this.props.showHoldDiceView}
+                    diceHeldButtonHandler={this.props.diceHeldButtonHandler}
                 />
             </div>
         );
