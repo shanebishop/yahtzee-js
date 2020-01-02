@@ -38,8 +38,6 @@ is removed, and the round number is updated.
 Pressing the "Reroll all" button rerolls all dice. After pressing reroll all
 on the roll above:
 
-![After reroll](https://raw.githubusercontent/shanebishop/yahtzee-js/master/doc/img/after-reroll.png)
-
 ![After reroll](https://raw.github.com/shanebishop/yahtzee-js/master/doc/img/after-reroll.png?sanitize=true)
 
 The "Choose some dice to hold" button's functionality is in progress. At the
