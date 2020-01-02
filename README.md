@@ -23,22 +23,22 @@ then the webapp can be accessed in a browser at [localhost:3000](http://localhos
 
 When the app is first launched, the first roll is displayed, as below:
 
-![Initial display](/doc/img/initial-display.png)
+![Initial display](https://raw.githubusercontent/shanebishop/yahtzee-js/master/doc/img/initial-display.png)
 
 When the player scores a roll, they can choose which category they want to score
 in. After scoring, the number of points they earned that round is displayed.
 
-![Scoring](/doc/img/scoring.png)
+![Scoring](https://raw.githubusercontent/shanebishop/yahtzee-js/master/doc/img/scoring.png)
 
 After clicking the "Continue to next round" button, the scoring part of the page
 is removed, and the round number is updated.
 
-![Next round](/doc/img/next-round.png)
+![Next round](https://raw.githubusercontent/shanebishop/yahtzee-js/master/doc/img/next-round.png)
 
 Pressing the "Reroll all" button rerolls all dice. After pressing reroll all
 on the roll above:
 
-![After reroll](/doc/img/after-reroll.png)
+![After reroll](https://raw.githubusercontent/shanebishop/yahtzee-js/master/doc/img/after-reroll.png)
 
 The "Choose some dice to hold" button's functionality is in progress. At the
 moment it only prompts the player to choose which dice to hold. When the
@@ -50,4 +50,4 @@ button.
 
 Below is the current display for holding dice:
 
-![In progress holding dice display](/doc/img/holding-dice.png)
+![In progress holding dice display](https://raw.githubusercontent/shanebishop/yahtzee-js/master/doc/img/holding-dice.png)
