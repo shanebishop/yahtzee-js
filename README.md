@@ -40,6 +40,8 @@ on the roll above:
 
 ![After reroll](https://raw.githubusercontent/shanebishop/yahtzee-js/master/doc/img/after-reroll.png)
 
+![After reroll](https://raw.github.com/shanebishop/yahtzee-js/master/doc/img/after-reroll.png?sanitize=true)
+
 The "Choose some dice to hold" button's functionality is in progress. At the
 moment it only prompts the player to choose which dice to hold. When the
 functionality is complete, selected dice will be indicated by a change in color,
